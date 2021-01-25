@@ -21,3 +21,11 @@
 import Route from '@ioc:Adonis/Core/Route'
 
 Route.on('/').render('welcome')
+Route.get('/login', 'LoginController.showLogin')
+Route.post('/login', 'LoginController.login');
+Route.group(() => {
+    Route.get('/index', 'HomeController.index')
+    Route.post('/store', 'HomeController.store')
+    Route.get('/logout', 'LoginController.logout')
+    Route.get('/profile', 'ProfilesController.addProfile')
+}).middleware(['auth']);

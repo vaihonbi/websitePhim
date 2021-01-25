@@ -4,7 +4,9 @@ import {
   column,
   beforeSave,
   BaseModel,
+  hasOne, HasOne,
 } from '@ioc:Adonis/Lucid/Orm'
+import Profile from 'App/Models/Profile'
 
 export default class User extends BaseModel {
   @column({ isPrimary: true })
@@ -26,9 +28,13 @@ export default class User extends BaseModel {
   public updatedAt: DateTime
 
   @beforeSave()
-  public static async hashPassword (user: User) {
+  public static async hashPassword(user: User) {
     if (user.$dirty.password) {
       user.password = await Hash.make(user.password)
     }
   }
+
+  @hasOne(() => Profile)
+  public profile: HasOne<typeof Profile>
+
 }

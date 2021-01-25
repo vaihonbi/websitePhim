@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Tải file</title>
+</head>
+<body>
+    <body>
+        <form
+          action="{{ route('HomeController.store') }}"
+          enctype="multipart/form-data"
+          method="POST"
+        >
+          <div>
+            <p>
+              <label for="email"> Email </label>
+            </p>
+            <input type="text" name="email">
+          </div>
+      
+          <div>
+            <p>
+              <label for="avatar"> Upload user avatar </label>
+            </p>
+            <input type="file" name="avatar">
+          </div>
+      
+          <hr>
+      
+          <div>
+            <button type="submit"> Add User </button>
+          </div>
+        </form>
+        <a href="{{route('LoginController.logout')}}"><button>Logout</button></a>
+      </body>
+</body>
+</html>
