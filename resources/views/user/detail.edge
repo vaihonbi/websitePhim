@@ -1,0 +1,83 @@
+@layout('welcome')
+@section('slide')
+@endsection
+@section('content')
+<style>
+    
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@600&display=swap");
+
+
+.star-rating {
+  font-size: 2rem;
+  position: relative;
+  
+}
+
+.star-rating:before {
+  content: "\1f7ca\1f7ca\1f7ca\1f7ca\1f7ca";
+  color: #e5e5e5;
+  filter: drop-shadow(0 0.6rem 0.3rem rgba(0,0,0,0.05));
+}
+
+.star-rating__fill {
+  position: absolute;
+  display: block;
+  top: 0;
+  left: 0;
+  overflow: hidden;
+  animation: fill-star 2s ease-in-out;
+  
+}
+
+.star-rating__fill:before {
+  content: "\1f7ca\1f7ca\1f7ca\1f7ca\1f7ca";
+  color: #bdbd19;
+}
+
+@keyframes fill-star {
+  0% {
+    width: 0;
+  }
+}
+
+</style>
+<div class="row">
+    <div class="col-sm-4">
+        <div class="card" style="border:none">
+            <div class="card-body p-0">
+              <img src="https://i.pinimg.com/736x/33/5d/a8/335da867b9bcaade1f994e5f44d73ee9.jpg" alt="" class="img-thumbnail">
+              <br>
+              <center>
+                <button class="btn btn-warning"><span>Giới thiệu</span></button>
+                <button class="btn btn-danger"><span>Xem Phim</span></button>
+              </center>
+            </div>
+          </div>
+    </div>
+    <div class="col-sm-8">
+        <h3>Ten phim 123456 Day la ten phim </h3>
+        <p>
+            <i class="fa fa-calendar" aria-hidden="true"></i>
+            2021
+            <i class="fa fa-clock-o" aria-hidden="true"></i>
+            120 phut
+        </p>
+        <p>Dao dien</p>
+        <p>Quoc gia</p>
+        <div class="star-rating">
+            <span class="star-rating__fill" style="width: 70%">
+            </span>
+        </div>
+    </div>
+    <br>
+  <div class="row p-5">
+    <button type="button" class="btn btn-primary" data-toggle="collapse" data-target="#demo">Mô tả phim</button>
+    <div id="demo" class="collapse">
+    Lorem ipsum dolor sit amet, consectetur adipisicing elit,
+    sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+    quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+  </div>
+  </div>
+</div>
+
+@endsection

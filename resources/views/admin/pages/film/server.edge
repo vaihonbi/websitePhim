@@ -1,0 +1,8 @@
+@layout('admin.layouts.layout')
+@section('content')
+    <form action="{{route('admin.phim.m3u8',{id:data.id})}}" method="post" enctype="multipart/form-data">
+        <label for="">Chọn file video (.m3u8)</label>
+        <input type="file" name="m3u8" id="" placeholder="Chọn file" accept=".m3u8">
+        <button type="submit">upload</button>
+    </form>
+@endsection

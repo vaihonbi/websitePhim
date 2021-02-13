@@ -20,12 +20,24 @@
 
 import Route from '@ioc:Adonis/Core/Route'
 
-Route.on('/').render('welcome')
+// Route.on('/').render('index')
 Route.get('/login', 'LoginController.showLogin')
 Route.post('/login', 'LoginController.login');
+Route.get('/', 'HomeController.index')
+
 Route.group(() => {
-    Route.get('/index', 'HomeController.index')
-    Route.post('/store', 'HomeController.store')
+    // Route.post('/store', 'HomeController.store')
     Route.get('/logout', 'LoginController.logout')
     Route.get('/profile', 'ProfilesController.addProfile')
+    Route.group(() => {
+        Route.get('/', 'AdminsController.dashboard');
+        Route.get('phim', 'FilmsController.create')
+        Route.post('phim', 'FilmsController.store')
+        Route.post('phim/:id/m3u8', 'FilmsController.addM3u8').as('admin.phim.m3u8')
+        // Route.get('m3u8', 'FilmsController.m3u8')
+    }).prefix('admin')
 }).middleware(['auth']);
+
+Route.get('detail/:id', 'WatchesController.detail')
+Route.get('watch/:id', 'WatchesController.watch')
+

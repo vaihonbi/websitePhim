@@ -4,18 +4,18 @@ import Application from '@ioc:Adonis/Core/Application'
 export default class HomeController {
     public async index({ view }: HttpContextContract) {
 
-        return view.render('upload_file');
+        return view.render('welcome');
     }
-    public async store({ request }: HttpContextContract) {
+    // public async store({ request }: HttpContextContract) {
 
-        const avatar = request.file('avatar')
-        if (!avatar) {
-            return 'Please upload file'
-        }
+    //     const avatar = request.file('avatar')
+    //     if (!avatar) {
+    //         return 'Please upload file'
+    //     }
 
-        await avatar.move(Application.tmpPath('uploads'))
+    //     await avatar.move(Application.tmpPath('uploads'))
 
-        return 'File uploaded successfully';
-    }
+    //     return 'File uploaded successfully';
+    // }
 
 }

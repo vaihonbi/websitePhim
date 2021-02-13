@@ -1,0 +1,31 @@
+@layout('welcome')
+@section('slide')
+@endsection
+@section('style')
+<link
+  rel="stylesheet"
+  href="https://cdnjs.cloudflare.com/ajax/libs/plyr/3.6.2/plyr.css"
+/>
+@endsection
+@section('content')
+<script async defer crossorigin="anonymous" src="https://connect.facebook.net/vi_VN/sdk.js#xfbml=1&version=v9.0" nonce="9VqaxijX"></script>
+
+<h1>{{id}}</h1>
+    day la watch
+    <video id="my-video"
+    width="100%"
+    height="auto"
+    controls
+    preload="auto"
+    poster="https://upload.wikimedia.org/wikipedia/en/1/14/Tenet_movie_poster.jpg">
+    <source src="http://103.27.236.37/phimle/thanhlongyennguyetdaovs.mp4" type="video/mp4" />
+    </video>
+    
+    <iframe src="https://www.facebook.com/plugins/like.php?href=https%3A%2F%2Fwww.facebook.com%2FPage-n%25C3%25A0y-l%25E1%25BA%25ADp-ra-%25C4%2591%25E1%25BB%2583-%25C4%2591i-b%25C3%25ACnh-lu%25E1%25BA%25ADn-d%25E1%25BA%25A1o-109071644224403&width=450&layout=standard&action=like&size=small&share=true&height=35&appId" width="450" height="35" style="border:none;overflow:hidden" scrolling="no" frameborder="0" allowfullscreen="true" allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"></iframe>
+    <h4>Day la ten phim</h4>
+    <div class="fb-comments" data-href="https://www.facebook.com/Page-n%C3%A0y-l%E1%BA%ADp-ra-%C4%91%E1%BB%83-%C4%91i-b%C3%ACnh-lu%E1%BA%ADn-d%E1%BA%A1o-109071644224403" data-width="" data-numposts="1"></div>
+@endsection
+
+@section('script')
+
+@endsection

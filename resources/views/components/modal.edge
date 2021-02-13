@@ -1,0 +1,24 @@
+<div x-data="{ open: false }">
+    <span @click="open = true">
+      {{{ $slots.trigger() }}}
+    </span>
+  
+    <div class="modal" :class="{ 'is-active': open }">
+      <div class="modal-background"></div>
+  
+      <div class="modal-card">
+        <header class="modal-card-head">
+          <p class="modal-card-title">{{ title }}</p>
+          <button class="delete" aria-label="close" @click="open=false"></button>
+        </header>
+  
+        <section class="modal-card-body">
+          {{{ $slots.body() }}}
+        </section>
+  
+        <footer class="modal-card-foot">
+          {{{ $slots.actions() }}}
+        </footer>
+      </div>
+    </div>
+  </div>
