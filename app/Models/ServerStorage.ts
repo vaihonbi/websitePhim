@@ -9,6 +9,9 @@ export default class ServerStorage extends BaseModel {
   public filmId: number
 
   @column()
+  public typeVideo: string
+
+  @column()
   public episode: number
 
   @column()

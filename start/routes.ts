@@ -31,8 +31,9 @@ Route.group(() => {
     Route.get('/profile', 'ProfilesController.addProfile')
     Route.group(() => {
         Route.get('/', 'AdminsController.dashboard');
-        Route.get('phim', 'FilmsController.create')
+        Route.get('phim', 'FilmsController.create')//chuyển tới trang nhập thông tin film
         Route.post('phim', 'FilmsController.store')
+        Route.get('phim/:id/m3u8', 'FilmsController.m3u8')//chuyển tới trang nhập thông tin file m3u8
         Route.post('phim/:id/m3u8', 'FilmsController.addM3u8').as('admin.phim.m3u8')
         // Route.get('m3u8', 'FilmsController.m3u8')
     }).prefix('admin')

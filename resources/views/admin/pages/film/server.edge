@@ -1,8 +1,29 @@
 @layout('admin.layouts.layout')
 @section('content')
-    <form action="{{route('admin.phim.m3u8',{id:data.id})}}" method="post" enctype="multipart/form-data">
-        <label for="">Chọn file video (.m3u8)</label>
-        <input type="file" name="m3u8" id="" placeholder="Chọn file" accept=".m3u8">
-        <button type="submit">upload</button>
-    </form>
+  <div class="container">
+    <div class="row">
+        <div class="col-sm-4">
+            <form action="{{route('admin.phim.m3u8',{id:data.id})}}" method="post" enctype="multipart/form-data">
+                <div class="form-group">
+                    <label for="">Type</label>
+                    <select name="type" id="" class="form-control">
+                        <option value="link">link</option>
+                        <option value="m3u8">3</option>
+                        <option value="youtube"></option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="">Chọn file video (.m3u8)</label>
+                    <input type="file" name="m3u8" id="" placeholder="Chọn file" accept=".m3u8" class="form-control">
+                </div>
+                <div class="form-group">
+                    <label for="">Nhập link</label>
+                    <input type="text" name="link" id="" class="form-control">
+                </div>
+                    <button type="submit" class="btn btn-warning">upload</button>
+            </form>
+        </div>
+        <div class="col-sm-8"></div>
+    </div>
+  </div>
 @endsection

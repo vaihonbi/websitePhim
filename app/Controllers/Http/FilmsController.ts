@@ -55,6 +55,9 @@ export default class FilmsController {
 
 
     }
+    public async m3u8({ view }: HttpContextContract) {
+        return view.render('admin.pages.film.server', { data: { id: 1 } })
+    }
 
     // public async m3u8({ view }: HttpContextContract) {
     //     return view.render('admin.pages.film.server')
@@ -62,13 +65,19 @@ export default class FilmsController {
     public async addM3u8({ response, request, params }: HttpContextContract) {
 
         const film = await Film.find(params.id);
-        const m3u8File = request.file('m3u8', {
-            extnames: ['m3u8']
-        })
-        const link = await this.saveFile(m3u8File, 'm3u8');
+        const type = request.input('type');
+        if (type == 'link') {
+            const link = request.input('link')
+            await film?.related('serverStorage').create({ link: link });
+        } else if (type == 'm3u8') {
+            const m3u8File = request.file('m3u8', {
+                extnames: ['m3u8']
+            })
 
-        const server_save = await film?.related('serverStorage').create({ link: link?.toString() });
+            const m3u8 = await this.saveFile(m3u8File, 'm3u8');
 
+            await film?.related('serverStorage').create({ link: m3u8?.toString() });
+        }
         return response.redirect().toRoute('/admin/phim');
     }
 
