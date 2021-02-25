@@ -31,7 +31,7 @@
 
 .star-rating__fill:before {
   content: "\1f7ca\1f7ca\1f7ca\1f7ca\1f7ca";
-  color: #bdbd19;
+  color: #038cfc;
 }
 
 @keyframes fill-star {
@@ -41,15 +41,21 @@
 }
 
 </style>
-<div class="row">
+<div class="row p-2">
     <div class="col-sm-4">
-        <div class="card" style="border:none">
+        <div class="card" style="border:none;background-color: #ff9933">
             <div class="card-body p-0">
-              <img src="https://i.pinimg.com/736x/33/5d/a8/335da867b9bcaade1f994e5f44d73ee9.jpg" alt="" class="img-thumbnail">
+              <img src="https://i.pinimg.com/736x/33/5d/a8/335da867b9bcaade1f994e5f44d73ee9.jpg" alt="" width="100%" height="auto" style="border-radius: 2px" class="pb-2">
               <br>
               <center>
-                <button class="btn btn-warning"><span>Giới thiệu</span></button>
-                <button class="btn btn-danger"><span><a href="{{route('/watch/:id',{id:1})}}" style="color: white">Xem Phim</a></span></button>
+                {{--  <button class="btn btn-warning"><span>
+                  <i class="fa fa-info" aria-hidden="true"></i>
+                  Giới thiệu
+                </span></button>  --}}
+                <button class="btn btn-danger"><span><a href="{{route('/watch/:id',{id:1})}}" style="color: white">
+                  <i class="fa fa-play" aria-hidden="true"></i>
+                  Xem Phim
+                </a></span></button>
               </center>
             </div>
           </div>
@@ -70,14 +76,20 @@
         </div>
     </div>
     <br>
-  <div class="row p-5">
-    <button type="button" class="btn btn-primary" data-toggle="collapse" data-target="#demo">Mô tả phim</button>
+  <div class="row p-4">
+    <button type="button" class="btn btn-primary" data-toggle="collapse" data-target="#demo">
+      <i class="fa fa-info" aria-hidden="true"></i>
+      Mô tả phim
+    </button>
     <div id="demo" class="collapse">
     Lorem ipsum dolor sit amet, consectetur adipisicing elit,
     sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
     quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+    </div>
+    
   </div>
-  </div>
+  
 </div>
+
 
 @endsection

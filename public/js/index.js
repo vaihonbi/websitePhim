@@ -1,7 +1,7 @@
 $(document).ready(function() {
     var autoplaySlider = $('#autoplay').lightSlider({
         speed: 1000,
-        item: 4,
+        item: 6,
         pause: 3000,
         auto: false,
         loop: true,

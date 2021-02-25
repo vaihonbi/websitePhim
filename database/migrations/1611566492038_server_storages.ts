@@ -8,7 +8,7 @@ export default class ServerStorages extends BaseSchema {
       table.increments('id')
       table.integer('film_id').unsigned().references('id').inTable('films').onDelete('CASCADE')
       table.enum('type_video', ['link', 'youtube', 'm3u8'])
-      table.integer('episode').defaultTo(0)
+      table.integer('episode').defaultTo(1)
       table.string('link').notNullable()
       table.timestamps(true)
     })

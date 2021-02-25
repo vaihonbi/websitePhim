@@ -1,4 +1,4 @@
-{
+export default {
     "client_id": "852053835565-mev70tgago7v8tsoh4o8eimev0490qcl.apps.googleusercontent.com",
     "project_id": "micro-amplifier-303610",
     "auth_uri": "https://accounts.google.com/o/oauth2/auth",
@@ -8,5 +8,5 @@
     "redirect_uris": [
         "https://developers.google.com/oauthplayground"
     ],
-    "refresh_token": "1//04upmGJqCuFLgCgYIARAAGAQSNwF-L9IrdC7rQfIGJ3c0iJeNkUnNiUhqAr9N0a1CBx2hyM87zbM5A97fclsM_mWzgGaG4tdcvb0"
+    "refresh_token": "1//0406GjF5bpAzqCgYIARAAGAQSNwF-L9IrUs0-G5kHBLw8hpgu-UJMYg0uQn8hc4Bwy36Z84UCTrn9yjjC_muBPqBF0r7n-QTLFnU"
 }

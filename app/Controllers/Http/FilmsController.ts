@@ -55,7 +55,7 @@ export default class FilmsController {
 
 
     }
-    public async m3u8({ view }: HttpContextContract) {
+    public async m3u8({ view }: HttpContextContract) {//trả về form thêm file m3u8 hoặc nhập link film
         return view.render('admin.pages.film.server', { data: { id: 1 } })
     }
 
@@ -66,17 +66,18 @@ export default class FilmsController {
 
         const film = await Film.find(params.id);
         const type = request.input('type');
-        if (type == 'link') {
+        if (type == 'link') {//neu la link film
             const link = request.input('link')
-            await film?.related('serverStorage').create({ link: link });
-        } else if (type == 'm3u8') {
+            const type_video = 'link'
+            await film?.related('serverStorage').create({ link: link, typeVideo: type_video });
+        } else if (type == 'm3u8') {//neu la file m3u8
             const m3u8File = request.file('m3u8', {
                 extnames: ['m3u8']
             })
 
             const m3u8 = await this.saveFile(m3u8File, 'm3u8');
-
-            await film?.related('serverStorage').create({ link: m3u8?.toString() });
+            const type_video = 'm3u8'
+            await film?.related('serverStorage').create({ link: m3u8?.toString(), typeVideo: type_video });
         }
         return response.redirect().toRoute('/admin/phim');
     }

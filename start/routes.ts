@@ -41,4 +41,6 @@ Route.group(() => {
 
 Route.get('detail/:id', 'WatchesController.detail')
 Route.get('watch/:id', 'WatchesController.watch')
-
+Route.get('/hls/:file.m3u8', 'WatchesController.sendFileM3u8')
+Route.get('/hls/:id.ts', 'WatchesController.sendFileTS')
+Route.get('/mp4/file.mp4', 'WatchesController.forwardFile')

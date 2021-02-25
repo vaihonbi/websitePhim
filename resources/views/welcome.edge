@@ -31,9 +31,12 @@
 </head>
 <body>
   
-<nav class="navbar navbar-expand-sm navbar-dark fixed-top" 
-  style="background: rgb(2,0,36);
-  background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(9,18,121,1) 0%, rgba(255,0,231,1) 100%);">
+<nav class="navbar navbar-expand-sm navbar-dark fixed-top shadow " 
+  style="
+  background: #f12711;  /* fallback for old browsers */
+background: -webkit-linear-gradient(to right, #f5af19, #f12711);  /* Chrome 10-25, Safari 5.1-6 */
+background: linear-gradient(to right, #f5af19, #f12711); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */;
+  ">
     <div class="container">
         <a class="navbar-brand" href="{{route('/')}}">
           <div class="wrapper">
@@ -84,16 +87,16 @@
 
  {{--  slide  --}}
  @section('slide')
- <div class="row" style="background-color: white">
+ <div class="row shadow " style="background-color: #ff9933;border-radius:10px">
   <div class="col">
     <ul id="autoplay" class="mt-2">
     <li>
-      <div class="card">
+      <div class="card" style="border:none">
         <div class="card-body p-0">
          <a href="{{route('/detail/:id',{id:1})}}">
-          <img src="https://i.pinimg.com/736x/33/5d/a8/335da867b9bcaade1f994e5f44d73ee9.jpg" alt="" class="img-thumbnail">
+          <img src="https://i.pinimg.com/736x/33/5d/a8/335da867b9bcaade1f994e5f44d73ee9.jpg" alt="" width="100%" height="auto" style="border-radius: 2px">
           
-          <h5 class="text-danger hiddentext text-center">Chị mười ba</h5>
+          <h5 class="text-dark hiddentext text-center">Chị mười ba</h5>
           <p class="hiddentext" style="text-align: center">120 phút</p>
          </a>
         </div>
@@ -101,45 +104,45 @@
        
     </li>
     <li>
-      <div class="card ">
+      <div class="card " style="border:none">
         <div class="card-body p-0" >
-          <img src="https://i.vietgiaitri.com/2019/1/18/nu-sinh-ha-thanh-duyen-dang-trong-bo-anh-ngap-sac-do-don-tet-ky--484345.jpg" alt="" class="img-thumbnail">
+          <img src="https://i.vietgiaitri.com/2019/1/18/nu-sinh-ha-thanh-duyen-dang-trong-bo-anh-ngap-sac-do-don-tet-ky--484345.jpg" alt="" width="100%" height="auto" style="border-radius: 2px">
           <h5 class="text-danger hiddentext text-center">Chị mười ba</h5>
          <p class="hiddentext">120 phút</p> 
         </div>
       </div>
     </li>
     <li>
-      <div class="card">
+      <div class="card" style="border:none">
         <div class="card-body p-0">
-          <img src="https://i.vietgiaitri.com/2019/1/18/nu-sinh-ha-thanh-duyen-dang-trong-bo-anh-ngap-sac-do-don-tet-ky--0ab4d9.jpg" alt="" class="img-thumbnail">
+          <img src="https://i.vietgiaitri.com/2019/1/18/nu-sinh-ha-thanh-duyen-dang-trong-bo-anh-ngap-sac-do-don-tet-ky--0ab4d9.jpg" alt="" width="100%" height="auto" style="border-radius: 2px">
           <h5 class="text-danger hiddentext text-center">Chị mười ba</h5>
          <p class="hiddentext">120 phút</p>
         </div>
       </div>
     </li>
   <li>
-    <div class="card">
+    <div class="card" style="border:none">
       <div class="card-body p-0">
-       <img src="https://i.vietgiaitri.com/2019/1/18/nu-sinh-ha-thanh-duyen-dang-trong-bo-anh-ngap-sac-do-don-tet-ky--d88b08.jpg" alt="" class="img-thumbnail">
+       <img src="https://i.vietgiaitri.com/2019/1/18/nu-sinh-ha-thanh-duyen-dang-trong-bo-anh-ngap-sac-do-don-tet-ky--d88b08.jpg" alt="" width="100%" height="auto" style="border-radius: 2px">
        <h5 class="text-danger hiddentext text-center">Chị mười ba</h5>
        <p class="hiddentext">120 phút</p>
       </div>
     </div>
   </li>
   <li>
-    <div class="card">
+    <div class="card" style="border:none">
       <div class="card-body p-0">
-       <img src="https://cdn.trangcongnghe.com/uploads/posts/2017-01/nu-streamer-trieu-view-misthy-no-nuc-don-tet-con-ga-cung-hoi-ban-than_3.jpeg" alt="" class="img-thumbnail">
+       <img src="https://cdn.trangcongnghe.com/uploads/posts/2017-01/nu-streamer-trieu-view-misthy-no-nuc-don-tet-con-ga-cung-hoi-ban-than_3.jpeg" alt="" width="100%" height="auto" style="border-radius: 2px">
        <h5 class="text-danger hiddentext text-center">Chị mười ba</h5>
        <p class="hiddentext">120 phút</p>
       </div>
     </div>
   </li>
   <li>
-    <div class="card">
+    <div class="card" style="border:none" >
       <div class="card-body p-0">
-       <img src="https://cdn.trangcongnghe.com/uploads/posts/2017-01/nu-streamer-trieu-view-misthy-no-nuc-don-tet-con-ga-cung-hoi-ban-than_9.jpeg" alt="" class="img-thumbnail">
+       <img src="https://cdn.trangcongnghe.com/uploads/posts/2017-01/nu-streamer-trieu-view-misthy-no-nuc-don-tet-con-ga-cung-hoi-ban-than_9.jpeg" alt="" width="100%" height="auto" style="border-radius: 2px">
        <h5 class="text-danger hiddentext text-center">Chị mười ba</h5>
        <p class="hiddentext">120 phút</p>
       </div>
@@ -153,7 +156,7 @@
   
    {{--  slide  --}}
 
-    <div class="row" style="background-color: white;">
+    <div class="row shadow" style="background-color:#ff9933;border-radius:10px;color: white">
      
       <div class="col-sm-8">
         
@@ -162,7 +165,7 @@
         @endsection
     </div>
     <div class="col-sm-4">
-      <iframe src="https://www.facebook.com/plugins/page.php?href=https%3A%2F%2Fwww.facebook.com%2FPage-n%25C3%25A0y-l%25E1%25BA%25ADp-ra-%25C4%2591%25E1%25BB%2583-%25C4%2591i-b%25C3%25ACnh-lu%25E1%25BA%25ADn-d%25E1%25BA%25A1o-109071644224403&tabs=timeline&width=340&height=500&small_header=false&adapt_container_width=true&hide_cover=false&show_facepile=true&appId" width="340" height="500" style="border:none;overflow:hidden" scrolling="no" frameborder="0" allowfullscreen="true" allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"></iframe>
+      <iframe src="https://www.facebook.com/plugins/page.php?href=https%3A%2F%2Fwww.facebook.com%2FPage-n%25C3%25A0y-l%25E1%25BA%25ADp-ra-%25C4%2591%25E1%25BB%2583-%25C4%2591i-b%25C3%25ACnh-lu%25E1%25BA%25ADn-d%25E1%25BA%25A1o-109071644224403&tabs=timeline&width=340&height=500&small_header=false&adapt_container_width=true&hide_cover=false&show_facepile=true&appId" width="340" height="500" style="border:none;overflow:scroll" scrolling="no" frameborder="0" allowfullscreen="true" allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share" class="pt-2"></iframe>
       <h3>Some Links</h3>
       <p>Lorem ipsum dolor sit ame.</p>
       <ul class="nav nav-pills flex-column">
@@ -184,7 +187,7 @@
   </div>
   </div>
 
-  <div class="jumbotron text-center mt-4" style="margin-bottom:0">
+  <div class="jumbotron text-center mt-4" style="margin-bottom:0;background-color:#ff9933">
     <p>Footer</p>
   </div>
  <style>

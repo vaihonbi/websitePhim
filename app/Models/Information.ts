@@ -1,11 +1,17 @@
 import { DateTime } from 'luxon'
 import { BaseModel, column } from '@ioc:Adonis/Lucid/Orm'
+import moment from "moment";
+moment.locale('vi');
 
 export default class Information extends BaseModel {
   @column({ isPrimary: true })
   public id: number
 
-  @column()
+  @column.dateTime({
+    autoCreate: true, serialize: (value?: DateTime) => {
+      return moment(value).format('Do MMMM  YYYY')
+    },
+  })
   public releaseDate: DateTime
 
   @column()
