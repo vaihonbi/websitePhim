@@ -31,6 +31,10 @@ Route.group(() => {
     Route.get('/profile', 'ProfilesController.addProfile')
     Route.group(() => {
         Route.get('/', 'AdminsController.dashboard');
+
+        Route.get('index','FilmsController.index')
+        Route.delete('index/:id','FilmsController.delete')//xoa phim
+
         Route.get('phim', 'FilmsController.create')//chuyển tới trang nhập thông tin film
         Route.post('phim', 'FilmsController.store')
         Route.get('phim/:id/m3u8', 'FilmsController.m3u8')//chuyển tới trang nhập thông tin file m3u8

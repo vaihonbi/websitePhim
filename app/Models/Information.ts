@@ -8,11 +8,14 @@ export default class Information extends BaseModel {
   public id: number
 
   @column.dateTime({
-    autoCreate: true, serialize: (value?: DateTime) => {
-      return moment(value).format('Do MMMM  YYYY')
+    serialize: (value) => {
+      return moment(value).format('L')
     },
   })
   public releaseDate: DateTime
+
+  @column()
+  public filmId: number
 
   @column()
   public directors: string

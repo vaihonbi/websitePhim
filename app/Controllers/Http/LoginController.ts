@@ -9,7 +9,8 @@ export default class LoginController {
         const password = request.input('password')
         const rememberUser = true;
         await auth.attempt(email, password, rememberUser)
-        return response.redirect().toRoute('/')
+        
+        return response.redirect().toRoute('/admin')
 
     }
     public async logout({ auth, response }: HttpContextContract) {

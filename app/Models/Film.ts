@@ -1,5 +1,5 @@
 import { DateTime } from 'luxon'
-import { BaseModel, column, hasMany, HasMany, belongsTo, BelongsTo } from '@ioc:Adonis/Lucid/Orm'
+import { BaseModel, column, hasMany, HasMany, belongsTo, BelongsTo, hasOne, HasOne  } from '@ioc:Adonis/Lucid/Orm'
 import Information from 'App/Models/Information'
 import Category from 'App/Models/Category'
 import Classify from 'App/Models/Classify'
@@ -15,11 +15,8 @@ export default class Film extends BaseModel {
   @column()
   public thumb: string
 
-  @column()
-  public informationId: number
-
-  @belongsTo(() => Information)
-  public information: BelongsTo<typeof Information>
+  @hasOne(() => Information)
+  public information: HasOne<typeof Information>
 
   @column()
   public categoryId: number

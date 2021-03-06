@@ -6,7 +6,8 @@ export default class Information extends BaseSchema {
   public async up() {
     this.schema.createTable(this.tableName, (table) => {
       table.increments('id')
-      table.dateTime('release_date')
+      table.integer('film_id')
+      table.date('release_date')
       table.string('directors')
       table.string('nation')
       table.integer('long')

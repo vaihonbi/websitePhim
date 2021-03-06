@@ -52,7 +52,7 @@
                   <i class="fa fa-info" aria-hidden="true"></i>
                   Giới thiệu
                 </span></button>  --}}
-                <button class="btn btn-danger"><span><a href="{{route('/watch/:id',{id:1})}}" style="color: white">
+                <button class="btn btn-danger"><span><a href="{{route('/watch/:id',{id:film.id})}}" style="color: white">
                   <i class="fa fa-play" aria-hidden="true"></i>
                   Xem Phim
                 </a></span></button>
@@ -61,15 +61,18 @@
           </div>
     </div>
     <div class="col-sm-8">
-        <h3>Ten phim 123456 Day la ten phim </h3>
+        <h3>{{film.name}}</h3>
         <p>
             <i class="fa fa-calendar" aria-hidden="true"></i>
-            2021
+           01-01-2021
+           
             <i class="fa fa-clock-o" aria-hidden="true"></i>
-            120 phut
+            {{film.information.long}} phút
         </p>
-        <p>Dao dien</p>
-        <p>Quoc gia</p>
+        <span class="text-primary">Đạo diễn : </span><span>{{film.information.directors}}</span><br>
+        <span class="text-primary">Quốc gia : </span><span>{{film.information.nation}}</span><br>
+        <span class="text-primary">Thể loại : </span><span>{{film.category.name}}</span>
+        
         <div class="star-rating">
             <span class="star-rating__fill" style="width: 70%">
             </span>
@@ -82,9 +85,7 @@
       Mô tả phim
     </button>
     <div id="demo" class="collapse">
-    Lorem ipsum dolor sit amet, consectetur adipisicing elit,
-    sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-    quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+      {{film.information.description}}
     </div>
     
   </div>

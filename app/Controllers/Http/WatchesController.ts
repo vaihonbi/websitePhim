@@ -3,13 +3,26 @@ import Application from '@ioc:Adonis/Core/Application'
 import Config from '@ioc:Adonis/Core/Config'
 import { google } from 'googleapis'
 import axios from 'axios';
+import Film from 'App/Models/Film'
+import moment from "moment";
 
 export default class WatchesController {
 
-    public async detail({ params, view }: HttpContextContract) {
-        return view.render('user.detail', {
-            id: params.id
-        })
+    public async detail({ params, view, response }: HttpContextContract) {
+        const film = await Film.find(params.id)
+        if (film) {
+            await film.preload('information');
+            await film.preload('category');
+            await film.preload('classify')
+
+            // const a = moment('2021-01-01').format('L')
+            return view.render('user.detail', { film })
+            // return film;
+
+        } else {
+            return response.redirect().back()
+        }
+
     }
 
     public async watch({ params, view }: HttpContextContract) {
@@ -45,11 +58,6 @@ export default class WatchesController {
         response.download(Application.publicPath('/m3u8/1614007341484.m3u8'))
     }
     public async sendFileTS({ params, request, response }: HttpContextContract) {
-        // const {
-        //     client_id,
-        //     client_secret,
-        //     refresh_token,
-        // } = require("credentials.json");
 
         const client = new google.auth.OAuth2({
             clientId: Config.get('google.client_id'),
@@ -58,10 +66,6 @@ export default class WatchesController {
         client.setCredentials({
             refresh_token: Config.get('google.refresh_token'),
         });
-        //console.log(await client.getAccessToken());
-
-        // console.log(Config.get('google.refresh_token'));
-
         const drive = google.drive({
             version: "v3",
             auth: client,

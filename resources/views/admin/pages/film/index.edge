@@ -1,0 +1,92 @@
+@layout('admin.layouts.layout')
+@section('content')
+<div class="container">
+    <div class="row">
+        <div class="col-12">
+          <div class="card">
+            <div class="card-header">
+              <h3 class="card-title">Danh sách phim</h3>
+
+              <div class="card-tools">
+                <div class="input-group input-group-sm" style="width: 150px;">
+                  <input type="text" name="table_search" class="form-control float-right" placeholder="Search">
+
+                  <div class="input-group-append">
+                    <button type="submit" class="btn btn-default">
+                        <i class="fa fa-search" aria-hidden="true"></i>
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <!-- /.card-header -->
+            <div class="card-body table-responsive p-0">
+              <table class="table table-hover text-nowrap">
+                <thead>
+                  <tr>
+                    <th>Tên phim</th>
+                    <th>Hình</th>
+                    <th>Thao tác</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  @each(item in films)
+                  <tr>
+                    <td>{{item.name}}</td>
+                    <td><img src="/images/{{item.thumb}}" class="img-thumbnail" alt="image" width="200px" height="auto"></td>
+                    <td><a href="javascript:destroy('{{route('/admin/index/:id',{id:item.id})}}')" class="btn btn-danger">Xóa</a></td>
+                  </tr>
+                  @endeach
+                  
+                </tbody>
+              </table>
+            </div>
+            <!-- /.card-body -->
+          </div>
+          <!-- /.card -->
+        </div>
+      </div>
+</div>
+@endsection
+@section('scripts')
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+  <script>
+    function destroy(url) {
+  Swal.fire({
+    icon: 'question',
+    title: 'Xác nhận',
+    html: 'Bạn có chắc muốn xóa phim này?',
+    confirmButtonText: 'Chắc',
+    cancelButtonText: 'Không',
+    showCancelButton: true,
+    showCloseButton: true,
+    showLoaderOnConfirm: true,
+    preConfirm: () => {
+      return $.ajax({
+        method: 'delete',
+        url
+      });
+    },
+    allowOutsideClick: () => !Swal.isLoading()
+  }).then(async (result) => {
+    if (result.isConfirmed) {
+      if (result.value.success) {
+        Swal.fire(
+          'Xong!',
+          'Hoàn tất.',
+          'success'
+        ).then(() => {
+          window.location.reload();
+        });
+      } else {
+        Swal.fire(
+          'Lỗi!',
+          'Không thể xóa phim.',
+          'error'
+        );
+      }
+    }
+  })
+}
+  </script>
+@endsection

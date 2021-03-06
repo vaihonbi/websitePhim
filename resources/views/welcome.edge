@@ -17,26 +17,18 @@
   <script src="/js/index.js"></script>
   @!section('style')
   <style>
-  .fakeimg {
-    height: 200px;
-    background: #aaa;
-  }
-  .hiddentext{
-    white-space: nowrap; 
-             width: 100%; 
-             overflow: hidden;
-             text-overflow: ellipsis; 
-  }
+  .fakeimg {height: 200px; background: #aaa;}
+
+  /* dùng để ẩn tên nếu vượt quá độ rộng */
+  .hiddentext{white-space:nowrap;width:100%;overflow:hidden;text-overflow:ellipsis}
+
+  .label::before{content:"Phim mới";color:#fff;font-size:12px;position:absolute;top:5px;left:5px;width:auto;height:20px;background-color:red;border-radius:2px}
   </style>
 </head>
 <body>
   
 <nav class="navbar navbar-expand-sm navbar-dark fixed-top shadow " 
-  style="
-  background: #f12711;  /* fallback for old browsers */
-background: -webkit-linear-gradient(to right, #f5af19, #f12711);  /* Chrome 10-25, Safari 5.1-6 */
-background: linear-gradient(to right, #f5af19, #f12711); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */;
-  ">
+  style="background: #f12711;background: -webkit-linear-gradient(to right, #f5af19, #f12711);background: linear-gradient(to right, #f5af19, #f12711); ">
     <div class="container">
         <a class="navbar-brand" href="{{route('/')}}">
           <div class="wrapper">
@@ -89,15 +81,15 @@ background: linear-gradient(to right, #f5af19, #f12711); /* W3C, IE 10+/ Edge, F
  @section('slide')
  <div class="row shadow " style="background-color: #ff9933;border-radius:10px">
   <div class="col">
-    <ul id="autoplay" class="mt-2">
-    <li>
+    <ul  id="autoplay" class="mt-2 ">
+    <li >
       <div class="card" style="border:none">
         <div class="card-body p-0">
          <a href="{{route('/detail/:id',{id:1})}}">
-          <img src="https://i.pinimg.com/736x/33/5d/a8/335da867b9bcaade1f994e5f44d73ee9.jpg" alt="" width="100%" height="auto" style="border-radius: 2px">
-          
-          <h5 class="text-dark hiddentext text-center">Chị mười ba</h5>
-          <p class="hiddentext" style="text-align: center">120 phút</p>
+          <img src="https://i.pinimg.com/736x/33/5d/a8/335da867b9bcaade1f994e5f44d73ee9.jpg" alt="" width="100%" height="auto" style="border-radius: 2px" >
+          <span class="label"></span>
+          <p class="text-dark hiddentext text-center" style="margin-bottom: 0">Chị mười ba</p>
+          <p   style="text-align: center;margin-bottom: 0">120 phút</p>
          </a>
         </div>
       </div>
@@ -106,9 +98,10 @@ background: linear-gradient(to right, #f5af19, #f12711); /* W3C, IE 10+/ Edge, F
     <li>
       <div class="card " style="border:none">
         <div class="card-body p-0" >
-          <img src="https://i.vietgiaitri.com/2019/1/18/nu-sinh-ha-thanh-duyen-dang-trong-bo-anh-ngap-sac-do-don-tet-ky--484345.jpg" alt="" width="100%" height="auto" style="border-radius: 2px">
-          <h5 class="text-danger hiddentext text-center">Chị mười ba</h5>
-         <p class="hiddentext">120 phút</p> 
+          <img src="https://i.vietgiaitri.com/2019/1/18/nu-sinh-ha-thanh-duyen-dang-trong-bo-anh-ngap-sac-do-don-tet-ky--484345.jpg" alt="" width="100%" height="auto" style="border-radius: 2px" >
+          
+          <p class="text-dark hiddentext text-center" style="margin-bottom: 0">Chị mười ba</p>
+          <p   style="text-align: center;margin-bottom: 0">120 phút</p>
         </div>
       </div>
     </li>
@@ -116,8 +109,8 @@ background: linear-gradient(to right, #f5af19, #f12711); /* W3C, IE 10+/ Edge, F
       <div class="card" style="border:none">
         <div class="card-body p-0">
           <img src="https://i.vietgiaitri.com/2019/1/18/nu-sinh-ha-thanh-duyen-dang-trong-bo-anh-ngap-sac-do-don-tet-ky--0ab4d9.jpg" alt="" width="100%" height="auto" style="border-radius: 2px">
-          <h5 class="text-danger hiddentext text-center">Chị mười ba</h5>
-         <p class="hiddentext">120 phút</p>
+          <p class="text-dark hiddentext text-center" style="margin-bottom: 0">Chị mười ba</p>
+         <p>120 phút</p>
         </div>
       </div>
     </li>
@@ -125,8 +118,8 @@ background: linear-gradient(to right, #f5af19, #f12711); /* W3C, IE 10+/ Edge, F
     <div class="card" style="border:none">
       <div class="card-body p-0">
        <img src="https://i.vietgiaitri.com/2019/1/18/nu-sinh-ha-thanh-duyen-dang-trong-bo-anh-ngap-sac-do-don-tet-ky--d88b08.jpg" alt="" width="100%" height="auto" style="border-radius: 2px">
-       <h5 class="text-danger hiddentext text-center">Chị mười ba</h5>
-       <p class="hiddentext">120 phút</p>
+       <p class="text-dark hiddentext text-center" style="margin-bottom: 0">Chị mười ba</p>
+       <p>120 phút</p>
       </div>
     </div>
   </li>
@@ -134,8 +127,8 @@ background: linear-gradient(to right, #f5af19, #f12711); /* W3C, IE 10+/ Edge, F
     <div class="card" style="border:none">
       <div class="card-body p-0">
        <img src="https://cdn.trangcongnghe.com/uploads/posts/2017-01/nu-streamer-trieu-view-misthy-no-nuc-don-tet-con-ga-cung-hoi-ban-than_3.jpeg" alt="" width="100%" height="auto" style="border-radius: 2px">
-       <h5 class="text-danger hiddentext text-center">Chị mười ba</h5>
-       <p class="hiddentext">120 phút</p>
+       <p class="text-dark hiddentext text-center" style="margin-bottom: 0">Chị mười ba</p>
+       <p>120 phút</p>
       </div>
     </div>
   </li>
@@ -143,8 +136,8 @@ background: linear-gradient(to right, #f5af19, #f12711); /* W3C, IE 10+/ Edge, F
     <div class="card" style="border:none" >
       <div class="card-body p-0">
        <img src="https://cdn.trangcongnghe.com/uploads/posts/2017-01/nu-streamer-trieu-view-misthy-no-nuc-don-tet-con-ga-cung-hoi-ban-than_9.jpeg" alt="" width="100%" height="auto" style="border-radius: 2px">
-       <h5 class="text-danger hiddentext text-center">Chị mười ba</h5>
-       <p class="hiddentext">120 phút</p>
+       <p class="text-dark hiddentext text-center" style="margin-bottom: 0">Chị mười ba</p>
+       <p>120 phút</p>
       </div>
     </div>
   </li>
@@ -161,7 +154,74 @@ background: linear-gradient(to right, #f5af19, #f12711); /* W3C, IE 10+/ Edge, F
       <div class="col-sm-8">
         
         @section('content')
-        <p>**Trang web đang được hoàn thiện**</p>
+        <h5 class="text-white pt-2" style="font-weight: bold;text-shadow: 0 0 3px #160920;">PHIM MỚI</h5>
+            <ul class="p-0" style="list-style: none">
+              <div class="row">
+                <div class="col-lg-4 col-sm-6 col-6">
+                  <li >
+                    <div class="card mb-4" style="border:none" >
+                      <div class="card-body p-0">
+                      <a href="{{route('/detail/:id',{id:1})}}">
+                        <img src="https://i.pinimg.com/736x/33/5d/a8/335da867b9bcaade1f994e5f44d73ee9.jpg" alt="" width="100%" height="auto" style="border-radius: 2px" >
+                        <span class="label"></span>
+                        {{--  <h5 class="text-dark hiddentext text-center">Chị mười ba</h5>  --}}
+                        <p class="text-dark hiddentext text-center" style="margin-bottom: 0">Chị mười ba</p>
+                        <p style="text-align: center;margin-bottom: 0">120 phút</p>
+                      </a>
+                      </div>
+                    </div>
+                  </li>
+                </div>
+              <div class="col-lg-4 col-sm-6 col-6">
+                <li>
+                  <div class="card" style="border:none">
+                    <div class="card-body p-0">
+                    <a href="{{route('/detail/:id',{id:1})}}">
+                      <img src="https://i.pinimg.com/736x/33/5d/a8/335da867b9bcaade1f994e5f44d73ee9.jpg" alt="" width="100%" height="auto" style="border-radius: 2px" >
+                      <span class="label"></span>
+                      {{--  <h5 class="text-dark hiddentext text-center">Chị mười ba</h5>  --}}
+                      <p class="text-dark hiddentext text-center" style="margin-bottom: 0">Chị mười ba</p>
+                      <p style="text-align: center;margin-bottom: 0">120 phút</p>
+                    </a>
+                    </div>
+                  </div>
+                </li>
+              </div>
+              <div class="col-lg-4 col-sm-6 col-6">
+                <li >
+                  <div class="card" style="border:none">
+                    <div class="card-body p-0">
+                    <a href="{{route('/detail/:id',{id:1})}}">
+                      <img src="https://i.pinimg.com/736x/33/5d/a8/335da867b9bcaade1f994e5f44d73ee9.jpg" alt="" width="100%" height="auto" style="border-radius: 2px" >
+                      <span class="label"></span>
+                      {{--  <h5 class="text-dark hiddentext text-center">Chị mười ba</h5>  --}}
+                      <p class="text-dark hiddentext text-center" style="margin-bottom: 0">Chị mười ba</p>
+                      <p   style="text-align: center;margin-bottom: 0">120 phút</p>
+                    </a>
+                    </div>
+                  </div>
+                </li>
+              </div>
+              <div class="col-lg-4 col-sm-6 col-6">
+                <li>
+                  <div class="card" style="border:none">
+                    <div class="card-body p-0">
+                    <a href="{{route('/detail/:id',{id:1})}}">
+                      <img src="https://i.pinimg.com/736x/33/5d/a8/335da867b9bcaade1f994e5f44d73ee9.jpg" alt="" width="100%" height="auto" style="border-radius: 2px" >
+                      <span class="label"></span>
+                      {{--  <h5 class="text-dark hiddentext text-center">Chị mười ba</h5>  --}}
+                      <p class="text-dark hiddentext text-center" style="margin-bottom: 0">Chị mười ba</p>
+                      <p  style="text-align: center;margin-bottom: 0">120 phút</p>
+                    </a>
+                    </div>
+                  </div>
+                </li>
+              </div>
+            </div>
+            </ul>
+            <h5 class="text-white pt-2" style="font-weight: bold;text-shadow: 0 0 3px #160920;">PHIM CHIẾU RẠP</h5>
+            <h5 class="text-white pt-2" style="font-weight: bold">PHIM LẺ MỚI CẬP NHẬT</h5>
+            <h5 class="text-white pt-2" style="font-weight: bold">PHIM BỘ MỚI</h5>
         @endsection
     </div>
     <div class="col-sm-4">
@@ -182,6 +242,7 @@ background: linear-gradient(to right, #f5af19, #f12711); /* W3C, IE 10+/ Edge, F
           <a class="nav-link disabled" href="#">Disabled</a>
         </li>
       </ul>
+      
       <hr class="d-sm-none">
     </div>
   </div>
