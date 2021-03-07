@@ -4,8 +4,8 @@ import Classify from 'App/Models/Classify'
 import Application from '@ioc:Adonis/Core/Application'
 import Information from 'App/Models/Information'
 import Film from 'App/Models/Film'
-import server from 'App/Models/ServerStorage'
-import View from '@ioc:Adonis/Core/View'
+// import server from 'App/Models/ServerStorage'
+// import View from '@ioc:Adonis/Core/View'
 // import View from '@ioc:Adonis/Core/View'
 
 export default class FilmsController {
@@ -22,6 +22,32 @@ export default class FilmsController {
         // return film
     }
 
+    public async search({view,params,request}:HttpContextContract){
+        const key=params.key;
+        const value=params.value;
+
+        const data=request.input('keyword')//nhan gia tri form tim kiem
+
+        switch(key){
+            case 'keyword':
+                // console.log('keyword'+data)
+                const film= await Film.query().where('name','like',`%${data}%`).preload('information')
+                const title =`Kết quả tìm kiếm cho từ khóa "${data}"`
+                return view.render('user.search',{title:title,film:film})
+                break;
+            case 'classify':
+                const film2=await Film.query().where('classify_id',value).preload('information').preload('classify')
+                if(film2){
+                    const title2=film2[0].classify.name
+                    return view.render('user.search',{title:title2,film:film2})
+                } 
+                break;
+            default:
+                return null;
+        }
+        
+    }
+
     public async store({ view, request }: HttpContextContract) {
         const phim = request.only(['name', 'thumb'])
         const information = request.only(['releaseDate', 'directors', 'nation', 'long', 'description'])
@@ -29,12 +55,11 @@ export default class FilmsController {
         const classify = request.input('classify');
         const thumb = request.file('thumb', {
             size: '2mb',
-            extnames: ['jpg', 'png', 'jpeg'],
+            extnames: ['jpg', 'png', 'jpeg','webp'],
         })
 
         // lưu hình
         phim.thumb = await this.saveFile(thumb, 'images')// dữ liệu trả ra tên file hình ảnh đã dc lưu
-
 
         //thêm 1 phim mới
         const data = await Film.create(phim);
@@ -51,32 +76,17 @@ export default class FilmsController {
 
         return view.render('admin.pages.film.server', { data })
 
-
     }
     
     public async m3u8({ view }: HttpContextContract) {//trả về form thêm file m3u8 hoặc nhập link film
         return view.render('admin.pages.film.server', { data: { id: 1 } })
     }
 
-
     public async addM3u8({ response, request, params }: HttpContextContract) {//them server storage
 
         const film = await Film.find(params.id);
         const type = request.input('type');
-        // if (type == 'link') {//neu la link film
-        //     const link = request.input('link')
-        //     const type_video = 'link'
-        //     await film?.related('serverStorage').create({ link: link, typeVideo: type_video });
-        // } else if (type == 'm3u8') {//neu la file m3u8
-        //     const m3u8File = request.file('m3u8', {
-        //         extnames: ['m3u8']
-        //     })
 
-        //     const m3u8 = await this.saveFile(m3u8File, 'm3u8');
-        //     const type_video = 'm3u8'
-        //     await film?.related('serverStorage').create({ link: m3u8?.toString(), typeVideo: type_video });
-        // }
-         
         switch(type){
             case "link"://neu la link 
             const link = request.input('link')

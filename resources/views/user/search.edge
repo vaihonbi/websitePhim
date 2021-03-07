@@ -1,0 +1,29 @@
+@layout('welcome')
+@section('slide')
+@endsection
+@section('content')
+<h5 class="text-white pt-2" style="font-weight: bold;text-shadow: 0 0 3px #160920;">{{title}}</h5>
+<ul class="p-0" style="list-style: none">
+  <div class="row">
+    
+    @each(item in film)
+      <div class="col-lg-4 col-sm-6 col-6">
+      <li>
+        <div class="card mb-4" style="border:none" >
+          <div class="card-body p-0">
+          <a href="{{route('/detail/:id',{id:item.id})}}">
+            <img src="/images/{{item.thumb}}" alt="" width="100%" height="auto" style="border-radius: 2px" >
+            <span class="label"></span>
+            
+            <p class="text-dark hiddentext text-center" style="margin-bottom: 0">{{item.name}}</p>
+            <p style="text-align: center;margin-bottom: 0">{{item.information.long}} phút</p>
+          </a>
+          </div>
+        </div>
+      </li>
+    </div>
+    @endeach
+  
+</div>
+</ul>
+@endsection

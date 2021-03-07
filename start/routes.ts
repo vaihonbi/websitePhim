@@ -34,6 +34,7 @@ Route.group(() => {
 
         Route.get('index','FilmsController.index')
         Route.delete('index/:id','FilmsController.delete')//xoa phim
+        
 
         Route.get('phim', 'FilmsController.create')//chuyển tới trang nhập thông tin film
         Route.post('phim', 'FilmsController.store')
@@ -48,3 +49,5 @@ Route.get('watch/:id', 'WatchesController.watch')
 Route.get('/hls/:file.m3u8', 'WatchesController.sendFileM3u8')
 Route.get('/hls/:id.ts', 'WatchesController.sendFileTS')
 Route.get('/mp4/file.mp4', 'WatchesController.forwardFile')
+
+Route.get('search/:key/:value','FilmsController.search')//tim kiem

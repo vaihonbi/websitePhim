@@ -26,10 +26,10 @@ export default class WatchesController {
     }
 
     public async watch({ params, view }: HttpContextContract) {
-
-        return view.render('user.watch', {
-            id: params.id
-        })
+        const film= await Film.find(params.id);
+        await film?.preload('serverStorage');
+        return view.render('user.watch', {film})
+        // return film;
     }
 
     public async forwardFile({ request, response }: HttpContextContract) {
@@ -55,7 +55,7 @@ export default class WatchesController {
     }
 
     public async sendFileM3u8({ params, response }: HttpContextContract) {//tra ve file m3u8 cho client
-        response.download(Application.publicPath('/m3u8/1614007341484.m3u8'))
+        response.download(Application.publicPath(`/m3u8/${params.file}.m3u8`))
     }
     public async sendFileTS({ params, request, response }: HttpContextContract) {
 

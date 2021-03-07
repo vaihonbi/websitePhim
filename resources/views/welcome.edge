@@ -4,15 +4,14 @@
   <title>X E M P H I M</title>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon.png">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
   <link rel="stylesheet" href="/css/lightslider.min.css">
   <link rel="stylesheet" href="/css/animation.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css">
-
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-  
   <script src="/js/lightslider.min.js"></script>
   <script src="/js/index.js"></script>
   @!section('style')
@@ -28,7 +27,8 @@
 <body>
   
 <nav class="navbar navbar-expand-sm navbar-dark fixed-top shadow " 
-  style="background: #f12711;background: -webkit-linear-gradient(to right, #f5af19, #f12711);background: linear-gradient(to right, #f5af19, #f12711); ">
+  style="background: rgb(0,101,122);
+  background: linear-gradient(90deg, rgba(0,101,122,1) 0%, rgba(0,38,51,1) 35%, rgba(0,0,0,1) 100%);">
     <div class="container">
         <a class="navbar-brand" href="{{route('/')}}">
           <div class="wrapper">
@@ -48,20 +48,23 @@
       <div class="collapse navbar-collapse" id="collapsibleNavbar">
         <ul class="navbar-nav">
           <li class="nav-item">
-            <a class="nav-link" href="#">Phim lẻ</a>
+            <a class="nav-link" href="{{route('/search/:key/:value',{key:'classify',value:2})}}">Phim lẻ</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#">Phim bộ</a>
+            <a class="nav-link" href="{{route('/search/:key/:value',{key:'classify',value:1})}}">Phim bộ</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#">Phim chiếu rạp</a>
+            <a class="nav-link" href="{{route('/search/:key/:value',{key:'classify',value:3})}}">Phim chiếu rạp</a>
           </li>    
+          <li class="nav-item">
+            <a class="nav-link" href="{{route('/search/:key/:value',{key:'classify',value:4})}}">Phim việt</a>
+          </li>
         </ul>
         
       </div> 
-      <form class="form-inline" action="">
+      <form class="form-inline" action="{{route('/search/:key/:value',{key:'keyword',value:'null'})}}" method="GET">
         <div class="input-group ">
-          <input class="form-control " type="text" placeholder="Tìm kiếm..." >
+          <input class="form-control" type="text" placeholder="Tìm kiếm..." name="keyword">
         
           <div class="input-group-append">
             <button class="btn btn-light" type="submit" ><i class="fa fa-search" aria-hidden="true"></i></button>
@@ -79,23 +82,25 @@
 
  {{--  slide  --}}
  @section('slide')
- <div class="row shadow " style="background-color: #ff9933;border-radius:10px">
+ <div class="row shadow " style="background-color: #002633;border-radius:10px">
   <div class="col">
-    <ul  id="autoplay" class="mt-2 ">
-    <li >
-      <div class="card" style="border:none">
-        <div class="card-body p-0">
-         <a href="{{route('/detail/:id',{id:1})}}">
-          <img src="https://i.pinimg.com/736x/33/5d/a8/335da867b9bcaade1f994e5f44d73ee9.jpg" alt="" width="100%" height="auto" style="border-radius: 2px" >
-          <span class="label"></span>
-          <p class="text-dark hiddentext text-center" style="margin-bottom: 0">Chị mười ba</p>
-          <p   style="text-align: center;margin-bottom: 0">120 phút</p>
-         </a>
+    <ul id="autoplay" class="mt-2" style="overflow: visible">
+      @each(item in film)
+      <li>
+        <div class="card" style="border:none">
+          <div class="card-body p-0">
+           <a href="{{route('/detail/:id',{id:item.id})}}">
+            <img src="/images/{{{item.thumb}}}" alt="" width="100%" height="auto" style="border-radius: 4px" >
+            <span class="label"></span>
+            <p class="text-dark hiddentext text-center" style="margin-bottom: 0">{{item.name}}</p>
+            <p   style="text-align: center;margin-bottom: 0">{{item.information.long}} phút</p>
+           </a>
+          </div>
         </div>
-      </div>
-       
-    </li>
-    <li>
+      </li>
+      @endeach
+    
+    {{--  <li>
       <div class="card " style="border:none">
         <div class="card-body p-0" >
           <img src="https://i.vietgiaitri.com/2019/1/18/nu-sinh-ha-thanh-duyen-dang-trong-bo-anh-ngap-sac-do-don-tet-ky--484345.jpg" alt="" width="100%" height="auto" style="border-radius: 2px" >
@@ -104,8 +109,8 @@
           <p   style="text-align: center;margin-bottom: 0">120 phút</p>
         </div>
       </div>
-    </li>
-    <li>
+    </li>  --}}
+    {{--  <li>
       <div class="card" style="border:none">
         <div class="card-body p-0">
           <img src="https://i.vietgiaitri.com/2019/1/18/nu-sinh-ha-thanh-duyen-dang-trong-bo-anh-ngap-sac-do-don-tet-ky--0ab4d9.jpg" alt="" width="100%" height="auto" style="border-radius: 2px">
@@ -113,8 +118,8 @@
          <p>120 phút</p>
         </div>
       </div>
-    </li>
-  <li>
+    </li>  --}}
+  {{--  <li>
     <div class="card" style="border:none">
       <div class="card-body p-0">
        <img src="https://i.vietgiaitri.com/2019/1/18/nu-sinh-ha-thanh-duyen-dang-trong-bo-anh-ngap-sac-do-don-tet-ky--d88b08.jpg" alt="" width="100%" height="auto" style="border-radius: 2px">
@@ -122,8 +127,8 @@
        <p>120 phút</p>
       </div>
     </div>
-  </li>
-  <li>
+  </li>  --}}
+  {{--  <li>
     <div class="card" style="border:none">
       <div class="card-body p-0">
        <img src="https://cdn.trangcongnghe.com/uploads/posts/2017-01/nu-streamer-trieu-view-misthy-no-nuc-don-tet-con-ga-cung-hoi-ban-than_3.jpeg" alt="" width="100%" height="auto" style="border-radius: 2px">
@@ -131,8 +136,8 @@
        <p>120 phút</p>
       </div>
     </div>
-  </li>
-  <li>
+  </li>  --}}
+  {{--  <li>
     <div class="card" style="border:none" >
       <div class="card-body p-0">
        <img src="https://cdn.trangcongnghe.com/uploads/posts/2017-01/nu-streamer-trieu-view-misthy-no-nuc-don-tet-con-ga-cung-hoi-ban-than_9.jpeg" alt="" width="100%" height="auto" style="border-radius: 2px">
@@ -140,7 +145,7 @@
        <p>120 phút</p>
       </div>
     </div>
-  </li>
+  </li>  --}}
 
   </ul>
   </div>
@@ -149,7 +154,7 @@
   
    {{--  slide  --}}
 
-    <div class="row shadow" style="background-color:#ff9933;border-radius:10px;color: white">
+    <div class="row shadow" style="background-color:#002633;border-radius:10px;color: white">
      
       <div class="col-sm-8">
         
@@ -220,36 +225,123 @@
             </div>
             </ul>
             <h5 class="text-white pt-2" style="font-weight: bold;text-shadow: 0 0 3px #160920;">PHIM CHIẾU RẠP</h5>
-            <h5 class="text-white pt-2" style="font-weight: bold">PHIM LẺ MỚI CẬP NHẬT</h5>
-            <h5 class="text-white pt-2" style="font-weight: bold">PHIM BỘ MỚI</h5>
+            <ul class="p-0" style="list-style: none">
+              <div class="row">
+              <div class="col-lg-4 col-sm-6 col-6">
+                <li>
+                  <div class="card" style="border:none">
+                    <div class="card-body p-0">
+                    <a href="{{route('/detail/:id',{id:1})}}">
+                      <img src="https://i.pinimg.com/736x/33/5d/a8/335da867b9bcaade1f994e5f44d73ee9.jpg" alt="" width="100%" height="auto" style="border-radius: 2px" >
+                      <span class="label"></span>
+                      {{--  <h5 class="text-dark hiddentext text-center">Chị mười ba</h5>  --}}
+                      <p class="text-dark hiddentext text-center" style="margin-bottom: 0">Chị mười ba</p>
+                      <p  style="text-align: center;margin-bottom: 0">120 phút</p>
+                    </a>
+                    </div>
+                  </div>
+                </li>
+              </div>
+            </div>
+            </ul>
+            <h5 class="text-white pt-2" style="font-weight: bold;text-shadow: 0 0 3px #160920;">PHIM LẺ MỚI CẬP NHẬT</h5>
+            <ul class="p-0" style="list-style: none">
+              <div class="row">
+              <div class="col-lg-4 col-sm-6 col-6">
+                <li>
+                  <div class="card" style="border:none">
+                    <div class="card-body p-0">
+                    <a href="{{route('/detail/:id',{id:1})}}">
+                      <img src="https://i.pinimg.com/736x/33/5d/a8/335da867b9bcaade1f994e5f44d73ee9.jpg" alt="" width="100%" height="auto" style="border-radius: 2px" >
+                      <span class="label"></span>
+                      {{--  <h5 class="text-dark hiddentext text-center">Chị mười ba</h5>  --}}
+                      <p class="text-dark hiddentext text-center" style="margin-bottom: 0">Chị mười ba</p>
+                      <p  style="text-align: center;margin-bottom: 0">120 phút</p>
+                    </a>
+                    </div>
+                  </div>
+                </li>
+              </div>
+            </div>
+            </ul>
+           
         @endsection
     </div>
     <div class="col-sm-4">
-      <iframe src="https://www.facebook.com/plugins/page.php?href=https%3A%2F%2Fwww.facebook.com%2FPage-n%25C3%25A0y-l%25E1%25BA%25ADp-ra-%25C4%2591%25E1%25BB%2583-%25C4%2591i-b%25C3%25ACnh-lu%25E1%25BA%25ADn-d%25E1%25BA%25A1o-109071644224403&tabs=timeline&width=340&height=500&small_header=false&adapt_container_width=true&hide_cover=false&show_facepile=true&appId" width="340" height="500" style="border:none;overflow:scroll" scrolling="no" frameborder="0" allowfullscreen="true" allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share" class="pt-2"></iframe>
-      <h3>Some Links</h3>
-      <p>Lorem ipsum dolor sit ame.</p>
-      <ul class="nav nav-pills flex-column">
+
+      <h3 class="text-white pt-2" style="font-weight: bold;text-shadow: 0 0 3px #160920;">PHIM BỘ MỚI</h3>
+      
+      <ul class="nav nav-pills flex-column" style="color:white">
         <li class="nav-item">
-          <a class="nav-link active" href="#">Active</a>
+          <a href="#">
+          <div class="row p-2">
+            <div class="col-lg-4">
+              <img src="https://i.pinimg.com/736x/33/5d/a8/335da867b9bcaade1f994e5f44d73ee9.jpg" alt="image" class="img-thumbnail"  style="border-radius: 2px" >
+              <span class="label"></span>
+            </div>
+            <div class="col-lg-8">
+              <p class="text-secondary hiddentext" style="margin-bottom: 0">Chị mười ba</p>
+              <p class="text-secondary" style="font-size:12px">120 phút</p>
+            </div>
+          </div>
+        </a>
+        <hr>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="#">Link</a>
+          <a href="#">
+          <div class="row p-2">
+            <div class="col-lg-4">
+              <img src="https://i.pinimg.com/736x/33/5d/a8/335da867b9bcaade1f994e5f44d73ee9.jpg" alt="image" class="img-thumbnail"  style="border-radius: 2px" >
+              <span class="label"></span>
+            </div>
+            <div class="col-lg-8">
+              <p class="text-secondary hiddentext" style="margin-bottom: 0">Chị mười ba</p>
+              <p class="text-secondary" style="font-size:12px">120 phút</p>
+            </div>
+          </div>
+        </a>
+        <hr>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="#">Link</a>
+          <a href="#">
+          <div class="row p-2">
+            <div class="col-lg-4">
+              <img src="https://i.pinimg.com/736x/33/5d/a8/335da867b9bcaade1f994e5f44d73ee9.jpg" alt="image" class="img-thumbnail"  style="border-radius: 2px" >
+              <span class="label"></span>
+            </div>
+            <div class="col-lg-8">
+              <p class="text-secondary hiddentext" style="margin-bottom: 0">Chị mười ba</p>
+              <p class="text-secondary" style="font-size:12px">120 phút</p>
+            </div>
+          </div>
+        </a>
+        <hr>
         </li>
         <li class="nav-item">
-          <a class="nav-link disabled" href="#">Disabled</a>
+          <a href="#">
+          <div class="row p-2">
+            <div class="col-lg-4">
+              <img src="https://i.pinimg.com/736x/33/5d/a8/335da867b9bcaade1f994e5f44d73ee9.jpg" alt="image" class="img-thumbnail"  style="border-radius: 2px" >
+              <span class="label"></span>
+            </div>
+            <div class="col-lg-8">
+              <p class="text-secondary hiddentext" style="margin-bottom: 0">Chị mười ba</p>
+              <p class="text-secondary" style="font-size:12px">120 phút</p>
+            </div>
+          </div>
+        </a>
+        <hr>
         </li>
       </ul>
-      
+      <iframe src="https://www.facebook.com/plugins/page.php?href=https%3A%2F%2Fwww.facebook.com%2FPage-n%25C3%25A0y-l%25E1%25BA%25ADp-ra-%25C4%2591%25E1%25BB%2583-%25C4%2591i-b%25C3%25ACnh-lu%25E1%25BA%25ADn-d%25E1%25BA%25A1o-109071644224403&tabs=timeline&width=340&height=500&small_header=false&adapt_container_width=true&hide_cover=false&show_facepile=true&appId" width="340" height="500" style="border:none;overflow:scroll" scrolling="no" frameborder="0" allowfullscreen="true" allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share" class="pt-2"></iframe>
+            
       <hr class="d-sm-none">
     </div>
   </div>
   </div>
 
-  <div class="jumbotron text-center mt-4" style="margin-bottom:0;background-color:#ff9933">
-    <p>Footer</p>
+  <div class="jumbotron text-white mt-4" style="margin-bottom:0;background-color:#002633">
+    <p>Xem phim online mỗi ngày tại trang phim đi lấy phim từ các trang khác :v</p>
   </div>
  <style>
   
@@ -259,5 +351,6 @@
  </style>
 </body>
 @section('script')
+
 @endsection
 </html>

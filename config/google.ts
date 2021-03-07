@@ -8,5 +8,5 @@ export default {
     "redirect_uris": [
         "https://developers.google.com/oauthplayground"
     ],
-    "refresh_token": "1//0406GjF5bpAzqCgYIARAAGAQSNwF-L9IrUs0-G5kHBLw8hpgu-UJMYg0uQn8hc4Bwy36Z84UCTrn9yjjC_muBPqBF0r7n-QTLFnU"
+    "refresh_token": "1//04f90W6qUItE4CgYIARAAGAQSNwF-L9IrhZNbMrA_cMTfcaEhHJC-i9ZNYgOd245Ez-Z9onuSqXnXOpcHvxxr_aT0hKYlTbwuFPI"
 }

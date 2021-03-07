@@ -11,51 +11,40 @@
 @section('content')
 <script async defer crossorigin="anonymous" src="https://connect.facebook.net/vi_VN/sdk.js#xfbml=1&version=v9.0" nonce="9VqaxijX"></script>
 
-<h1>{{id}}</h1>
-    day la watch
-    <video id="my-video"
-    width="100%"
-    height="auto"
-    controls
-    preload="auto"
-    poster="https://upload.wikimedia.org/wikipedia/en/1/14/Tenet_movie_poster.jpg">
-    <source src="http://103.27.236.37/phimle/thanhlongyennguyetdaovs.mp4" type="video/mp4" />
+{{--  <h1>{{id}}</h1>  --}}
+    <div class="row m-1 mt-3">
+      {{--  <div class="col">  --}}
+        @if(film.serverStorage[0].typeVideo == 'link')
+    <video id="my-video" width="100%" height="auto" controls preload="auto" poster="/images/{{film.thumb}}">
+    <source src="{{film.serverStorage[0].link}}" type="video/mp4" />
     </video>
-    {{--  <video src="" id="player" autoplay controls crossorigin></video>  --}}
-    
-    <iframe src="https://www.facebook.com/plugins/like.php?href=https%3A%2F%2Fwww.facebook.com%2FPage-n%25C3%25A0y-l%25E1%25BA%25ADp-ra-%25C4%2591%25E1%25BB%2583-%25C4%2591i-b%25C3%25ACnh-lu%25E1%25BA%25ADn-d%25E1%25BA%25A1o-109071644224403&width=450&layout=standard&action=like&size=small&share=true&height=35&appId" width="100%" height="35" style="border:none;overflow:hidden" scrolling="no" frameborder="0" allowfullscreen="true" allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"></iframe>
-    <h4>Day la ten phim</h4>
+
+    @elseif(film.serverStorage[0].typeVideo == 'iframe')
+    {{{film.serverStorage[0].link}}}
+    @elseif(film.serverStorage[0].typeVideo == 'm3u8')
+      <div id="video" class="col"></div>
+      <script type="text/JavaScript">
+          jwplayer("video").setup({ "file": "http://localhost:3333/hls/{{film.serverStorage[0].link}}" });
+      </script>
+    @else
+
+    <h1>hello</h1>
+    @endif
+      {{--  </div>  --}}
+    </div>
+   
+    {{--    --}}
+    <iframe src="https://www.facebook.com/plugins/like.php?href=https%3A%2F%2Fwww.facebook.com%2FPage-n%25C3%25A0y-l%25E1%25BA%25ADp-ra-%25C4%2591%25E1%25BB%2583-%25C4%2591i-b%25C3%25ACnh-lu%25E1%25BA%25ADn-d%25E1%25BA%25A1o-109071644224403&width=450&layout=standard&action=like&size=small&share=true&height=35&appId" width="100%" height="35" style="border:none;overflow:hidden;" scrolling="no" frameborder="0" allowfullscreen="true" allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"></iframe>
+    <h4>{{film.name}}</h4>
     <div class="row pl-3">
       <div class="alert alert-danger">
         <strong>Lưu ý!</strong> Không bấm vào các link dưới phần bình luận!
       </div>
     </div>
-    <div class="fb-comments" data-href="https://www.facebook.com/Page-n%C3%A0y-l%E1%BA%ADp-ra-%C4%91%E1%BB%83-%C4%91i-b%C3%ACnh-lu%E1%BA%ADn-d%E1%BA%A1o-109071644224403" data-width="" data-numposts="1"></div>
-    
+    <div class="fb-comments text-white" data-href="https://www.facebook.com/Page-n%C3%A0y-l%E1%BA%ADp-ra-%C4%91%E1%BB%83-%C4%91i-b%C3%ACnh-lu%E1%BA%ADn-d%E1%BA%A1o-109071644224403" data-width="" data-numposts="1" style="background-color: white"></div>
+    {{--    --}}
 @endsection
 
 @section('script')
-{{--  <script src="https://cdnjs.cloudflare.com/ajax/libs/plyr/3.6.2/plyr.min.js"></script>
-<script src="https://cdn.rawgit.com/video-dev/hls.js/18bb552/dist/hls.min.js"></script>
-<script>
-  const video = document.querySelector("video");
-  const source = 'http://103.27.236.37/phimle/thanhlongyennguyetdaovs.mp4';
-  
-  const player = new Plyr(video, {
-    autoplay: true,
-    muted: true,
-    volume: 0,
-    controls: false
-  });
-  if (!Hls.isSupported()) {
-    video.src = source;
-  } else {
-    const hls = new Hls();
-    hls.loadSource(source);
-    hls.attachMedia(video);
-    window.hls = hls;
-  }
-  
-  window.player = player;
-  </script>  --}}
+
 @endsection
