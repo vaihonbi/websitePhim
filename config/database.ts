@@ -59,16 +59,18 @@ const databaseConfig: DatabaseConfig & { orm: Partial<OrmConfig> } = {
     |
     */
     pg: {
-      client: 'pg',
+      client: "pg",
       connection: {
-        host: Env.get('PG_HOST'),
-        port: Env.get('PG_PORT'),
-        user: Env.get('PG_USER'),
-        password: Env.get('PG_PASSWORD', ''),
-        database: Env.get('PG_DB_NAME'),
+        host: Env.get("DB_HOST", "127.0.0.1") as string,
+        port: Number(Env.get("DB_PORT", 5432)),
+        user: Env.get("DB_USER", "lucid") as string,
+        password: Env.get("DB_PASSWORD", "lucid") as string,
+        database: Env.get("DB_NAME", "lucid") as string,
+        ssl: {
+          rejectUnauthorized: false,
+        },
       },
       healthCheck: false,
-      debug: false,
     },
 
   },
