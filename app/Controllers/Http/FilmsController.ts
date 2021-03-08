@@ -31,9 +31,10 @@ export default class FilmsController {
         switch(key){
             case 'keyword':
                 // console.log('keyword'+data)
-                const film= await Film.query().where('name','like',`%${data}%`).preload('information')
+                const film= await Film.query().where('name','ILIKE',`%${data}%`).preload('information')
                 const title =`Kết quả tìm kiếm cho từ khóa "${data}"`
-                return view.render('user.search',{title:title,film:film})
+                // return view.render('user.search',{title:title,film:film})
+                return film;
                 break;
             case 'classify':
                 const film2=await Film.query().where('classify_id',value).preload('information').preload('classify')
