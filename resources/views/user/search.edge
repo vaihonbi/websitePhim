@@ -12,7 +12,7 @@
         <div class="card mb-4" style="border:none" >
           <div class="card-body p-0">
           <a href="{{route('/detail/:id',{id:item.id})}}">
-            <center><img src="/images/{{item.thumb}}" alt="" width="auto" height="250" style="border-radius: 2px;max-width: 200px" ></center>
+            <center><img src="/images/{{item.thumb}}" alt="" width="100%" height="300" style="border-radius: 2px; overflow: hidden;max-height: 300px" ></center>
             <span class="label"></span>
             
             <p class="text-dark hiddentext text-center" style="margin-bottom: 0">{{item.name}}</p>
