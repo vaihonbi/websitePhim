@@ -59,6 +59,34 @@
           <li class="nav-item">
             <a class="nav-link" href="{{route('/search/:key/:value',{key:'classify',value:4})}}">Phim việt</a>
           </li>
+          <!-- Dropdown -->
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown">
+              Thể loại
+            </a>
+            <div class="dropdown-menu">
+              
+              <div class="d-flex text-white">  
+              <div >
+                <a class="dropdown-item" href="#">Link 1</a>
+                <a class="dropdown-item" href="#">Link 2</a>
+                <a class="dropdown-item" href="#">Link 3</a>
+              </div>
+              <div >
+                <a class="dropdown-item" href="#">Link 1</a>
+                <a class="dropdown-item" href="#">Link 2</a>
+                <a class="dropdown-item" href="#">Link 3</a>
+              </div>
+              <div >
+                <a class="dropdown-item" href="#">Link 1</a>
+                <a class="dropdown-item" href="#">Link 2</a>
+                <a class="dropdown-item" href="#">Link 3</a>
+              </div>
+            </div>
+            </div>
+            
+            
+          </li>
         </ul>
         
       </div> 
@@ -114,109 +142,70 @@
       <div class="col-sm-8">
         
         @section('content')
-        <h5 class="text-white pt-2" style="font-weight: bold;text-shadow: 0 0 3px #160920;">PHIM MỚI</h5>
+        <h5 class="text-white pt-2" style="font-weight: bold;text-shadow: 0 0 3px #160920;">PHIM VIỆT</h5>
             <ul class="p-0" style="list-style: none">
               <div class="row">
+                @each(item in film_viet)
                 <div class="col-lg-4 col-sm-6 col-6">
                   <li >
                     <div class="card mb-4" style="border:none" >
                       <div class="card-body p-0">
-                      <a href="{{route('/detail/:id',{id:1})}}">
-                        <img src="https://i.pinimg.com/736x/33/5d/a8/335da867b9bcaade1f994e5f44d73ee9.jpg" alt="" width="100%" height="auto" style="border-radius: 2px" >
+                      <a href="{{route('/detail/:id',{id:item.id})}}">
+                        <center><img src="/images/{{item.thumb}}" alt="" width="100%" height="auto" style="border-radius: 2px; overflow: hidden;max-height: 300px" ></center>
                         <span class="label"></span>
-                        {{--  <h5 class="text-dark hiddentext text-center">Chị mười ba</h5>  --}}
-                        <p class="text-dark hiddentext text-center" style="margin-bottom: 0">Chị mười ba</p>
-                        <p style="text-align: center;margin-bottom: 0">120 phút</p>
+                        
+                        <p class="text-dark hiddentext text-center" style="margin-bottom: 0">{{item.name}}</p>
+                        <p style="text-align: center;margin-bottom: 0">{{item.information.long}} phút</p>
                       </a>
                       </div>
                     </div>
                   </li>
                 </div>
-              <div class="col-lg-4 col-sm-6 col-6">
-                <li>
-                  <div class="card" style="border:none">
-                    <div class="card-body p-0">
-                    <a href="{{route('/detail/:id',{id:1})}}">
-                      <img src="https://i.pinimg.com/736x/33/5d/a8/335da867b9bcaade1f994e5f44d73ee9.jpg" alt="" width="100%" height="auto" style="border-radius: 2px" >
-                      <span class="label"></span>
-                      {{--  <h5 class="text-dark hiddentext text-center">Chị mười ba</h5>  --}}
-                      <p class="text-dark hiddentext text-center" style="margin-bottom: 0">Chị mười ba</p>
-                      <p style="text-align: center;margin-bottom: 0">120 phút</p>
-                    </a>
-                    </div>
-                  </div>
-                </li>
-              </div>
-              <div class="col-lg-4 col-sm-6 col-6">
-                <li >
-                  <div class="card" style="border:none">
-                    <div class="card-body p-0">
-                    <a href="{{route('/detail/:id',{id:1})}}">
-                      <img src="https://i.pinimg.com/736x/33/5d/a8/335da867b9bcaade1f994e5f44d73ee9.jpg" alt="" width="100%" height="auto" style="border-radius: 2px" >
-                      <span class="label"></span>
-                      {{--  <h5 class="text-dark hiddentext text-center">Chị mười ba</h5>  --}}
-                      <p class="text-dark hiddentext text-center" style="margin-bottom: 0">Chị mười ba</p>
-                      <p   style="text-align: center;margin-bottom: 0">120 phút</p>
-                    </a>
-                    </div>
-                  </div>
-                </li>
-              </div>
-              <div class="col-lg-4 col-sm-6 col-6">
-                <li>
-                  <div class="card" style="border:none">
-                    <div class="card-body p-0">
-                    <a href="{{route('/detail/:id',{id:1})}}">
-                      <img src="https://i.pinimg.com/736x/33/5d/a8/335da867b9bcaade1f994e5f44d73ee9.jpg" alt="" width="100%" height="auto" style="border-radius: 2px" >
-                      <span class="label"></span>
-                      {{--  <h5 class="text-dark hiddentext text-center">Chị mười ba</h5>  --}}
-                      <p class="text-dark hiddentext text-center" style="margin-bottom: 0">Chị mười ba</p>
-                      <p  style="text-align: center;margin-bottom: 0">120 phút</p>
-                    </a>
-                    </div>
-                  </div>
-                </li>
-              </div>
+                @endeach
             </div>
             </ul>
-            <h5 class="text-white pt-2" style="font-weight: bold;text-shadow: 0 0 3px #160920;">PHIM CHIẾU RẠP</h5>
+            <h5 class="text-white pt-2" style="font-weight: bold;text-shadow: 0 0 3px #160920;">PHIM KINH DỊ</h5>
             <ul class="p-0" style="list-style: none">
               <div class="row">
-              <div class="col-lg-4 col-sm-6 col-6">
-                <li>
-                  <div class="card" style="border:none">
-                    <div class="card-body p-0">
-                    <a href="{{route('/detail/:id',{id:1})}}">
-                      <img src="https://i.pinimg.com/736x/33/5d/a8/335da867b9bcaade1f994e5f44d73ee9.jpg" alt="" width="100%" height="auto" style="border-radius: 2px" >
-                      <span class="label"></span>
-                      {{--  <h5 class="text-dark hiddentext text-center">Chị mười ba</h5>  --}}
-                      <p class="text-dark hiddentext text-center" style="margin-bottom: 0">Chị mười ba</p>
-                      <p  style="text-align: center;margin-bottom: 0">120 phút</p>
-                    </a>
+                @each(item in film_kinhdi)
+                <div class="col-lg-4 col-sm-6 col-6">
+                  <li >
+                    <div class="card mb-4" style="border:none" >
+                      <div class="card-body p-0">
+                      <a href="{{route('/detail/:id',{id:item.id})}}">
+                        <center><img src="/images/{{item.thumb}}" alt="" width="100%" height="auto" style="border-radius: 2px; overflow: hidden;max-height: 300px" ></center>
+                        <span class="label"></span>
+                        
+                        <p class="text-dark hiddentext text-center" style="margin-bottom: 0">{{item.name}}</p>
+                        <p style="text-align: center;margin-bottom: 0">{{item.information.long}} phút</p>
+                      </a>
+                      </div>
                     </div>
-                  </div>
-                </li>
-              </div>
+                  </li>
+                </div>
+                @endeach
             </div>
             </ul>
-            <h5 class="text-white pt-2" style="font-weight: bold;text-shadow: 0 0 3px #160920;">PHIM LẺ MỚI CẬP NHẬT</h5>
+            <h5 class="text-white pt-2" style="font-weight: bold;text-shadow: 0 0 3px #160920;">PHIM HÀNH ĐỘNG</h5>
             <ul class="p-0" style="list-style: none">
               <div class="row">
-              <div class="col-lg-4 col-sm-6 col-6">
-                <li>
-                  <div class="card" style="border:none">
-                    <div class="card-body p-0">
-                    <a href="{{route('/detail/:id',{id:1})}}">
-                      <img src="https://i.pinimg.com/736x/33/5d/a8/335da867b9bcaade1f994e5f44d73ee9.jpg" alt="" width="100%" height="auto" style="border-radius: 2px" >
-                      <span class="label"></span>
-                      {{--  <h5 class="text-dark hiddentext text-center">Chị mười ba</h5>  --}}
-                      <p class="text-dark hiddentext text-center" style="margin-bottom: 0">Chị mười ba</p>
-                      <p  style="text-align: center;margin-bottom: 0">120 phút</p>
-                    </a>
+                @each(item in film_hd)
+                <div class="col-lg-4 col-sm-6 col-6">
+                  <li >
+                    <div class="card mb-4" style="border:none" >
+                      <div class="card-body p-0">
+                      <a href="{{route('/detail/:id',{id:item.id})}}">
+                        <center><img src="/images/{{item.thumb}}" alt="" width="100%" height="auto" style="border-radius: 2px; overflow: hidden;max-height: 300px" ></center>
+                        <span class="label"></span>
+                        
+                        <p class="text-dark hiddentext text-center" style="margin-bottom: 0">{{item.name}}</p>
+                        <p style="text-align: center;margin-bottom: 0">{{item.information.long}} phút</p>
+                      </a>
+                      </div>
                     </div>
-                  </div>
-                </li>
-              </div>
+                  </li>
+                </div>
+                @endeach
             </div>
             </ul>
            
@@ -230,13 +219,13 @@
         <li class="nav-item">
           <a href="#">
           <div class="row p-2">
-            <div class="col-lg-4">
-              <img src="https://i.pinimg.com/736x/33/5d/a8/335da867b9bcaade1f994e5f44d73ee9.jpg" alt="image" class="img-thumbnail"  style="border-radius: 2px" >
+            <div class="col-4">
+              <img src="http://image.phimmoizz.net/film/12354/poster.medium.jpg" alt="image" class="img-thumbnail"  style="border-radius: 2px" >
               <span class="label"></span>
             </div>
-            <div class="col-lg-8">
-              <p class="text-secondary hiddentext" style="margin-bottom: 0">Chị mười ba</p>
-              <p class="text-secondary" style="font-size:12px">120 phút</p>
+            <div class="col-8">
+              <p class="text-secondary hiddentext" style="margin-bottom: 0">Bán yêu tư đằng</p>
+              <p class="text-secondary" style="font-size:12px">45 phút/tập</p>
             </div>
           </div>
         </a>
@@ -245,13 +234,13 @@
         <li class="nav-item">
           <a href="#">
           <div class="row p-2">
-            <div class="col-lg-4">
-              <img src="https://i.pinimg.com/736x/33/5d/a8/335da867b9bcaade1f994e5f44d73ee9.jpg" alt="image" class="img-thumbnail"  style="border-radius: 2px" >
+            <div class="col-4">
+              <img src="http://image.phimmoizz.net/film/12289/poster.medium.jpg" alt="image" class="img-thumbnail"  style="border-radius: 2px" >
               <span class="label"></span>
             </div>
-            <div class="col-lg-8">
-              <p class="text-secondary hiddentext" style="margin-bottom: 0">Chị mười ba</p>
-              <p class="text-secondary" style="font-size:12px">120 phút</p>
+            <div class="col-8">
+              <p class="text-secondary hiddentext" style="margin-bottom: 0">Chàng trai tôi từng nhớ</p>
+              <p class="text-secondary" style="font-size:12px">45 phút/tập</p>
             </div>
           </div>
         </a>
@@ -260,13 +249,13 @@
         <li class="nav-item">
           <a href="#">
           <div class="row p-2">
-            <div class="col-lg-4">
-              <img src="https://i.pinimg.com/736x/33/5d/a8/335da867b9bcaade1f994e5f44d73ee9.jpg" alt="image" class="img-thumbnail"  style="border-radius: 2px" >
+            <div class="col-4">
+              <img src="http://image.phimmoizz.net/film/12217/poster.medium.jpg" alt="image" class="img-thumbnail"  style="border-radius: 2px" >
               <span class="label"></span>
             </div>
-            <div class="col-lg-8">
-              <p class="text-secondary hiddentext" style="margin-bottom: 0">Chị mười ba</p>
-              <p class="text-secondary" style="font-size:12px">120 phút</p>
+            <div class="col-8">
+              <p class="text-secondary hiddentext" style="margin-bottom: 0">JANE trong trắng (phần 3)</p>
+              <p class="text-secondary" style="font-size:12px">60 phút/tập</p>
             </div>
           </div>
         </a>
@@ -275,13 +264,13 @@
         <li class="nav-item">
           <a href="#">
           <div class="row p-2">
-            <div class="col-lg-4">
-              <img src="https://i.pinimg.com/736x/33/5d/a8/335da867b9bcaade1f994e5f44d73ee9.jpg" alt="image" class="img-thumbnail"  style="border-radius: 2px" >
+            <div class="col-4">
+              <img src="http://image.phimmoizz.net/film/12121/poster.medium.jpg" alt="image" class="img-thumbnail"  style="border-radius: 2px" >
               <span class="label"></span>
             </div>
-            <div class="col-lg-8">
-              <p class="text-secondary hiddentext" style="margin-bottom: 0">Chị mười ba</p>
-              <p class="text-secondary" style="font-size:12px">120 phút</p>
+            <div class="col-8">
+              <p class="text-secondary hiddentext" style="margin-bottom: 0">Họa giang hồ chi quỹ dạ hành</p>
+              <p class="text-secondary" style="font-size:12px">18 phút/tập</p>
             </div>
           </div>
         </a>

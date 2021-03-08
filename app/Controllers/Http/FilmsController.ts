@@ -22,7 +22,7 @@ export default class FilmsController {
         // return film
     }
 
-    public async search({view,params,request}:HttpContextContract){
+    public async search({view,params,request,response}:HttpContextContract){
         const key=params.key;
         const value=params.value;
 
@@ -38,10 +38,12 @@ export default class FilmsController {
                 break;
             case 'classify':
                 const film2=await Film.query().where('classify_id',value).preload('information').preload('classify')
-                if(film2){
+                if(film2.length !=0){
                     const title2=film2[0].classify.name
                     return view.render('user.search',{title:title2,film:film2})
-                } 
+                }else{
+                    response.redirect('back')
+                }
                 break;
             default:
                 return null;
