@@ -88,65 +88,20 @@
       @each(item in film)
       <li>
         <div class="card" style="border:none">
+          <a href="{{route('/detail/:id',{id:item.id})}}">
           <div class="card-body p-0">
-           <a href="{{route('/detail/:id',{id:item.id})}}">
+           
             <img src="/images/{{{item.thumb}}}" alt="" width="100%" height="auto" style="border-radius: 4px" >
             <span class="label"></span>
             <p class="text-dark hiddentext text-center" style="margin-bottom: 0">{{item.name}}</p>
-            <p   style="text-align: center;margin-bottom: 0">{{item.information.long}} phút</p>
-           </a>
+            <p style="text-align: center;margin-bottom: 0">{{item.information.long}} phút</p>
+           
           </div>
+        </a>
         </div>
       </li>
       @endeach
     
-    {{--  <li>
-      <div class="card " style="border:none">
-        <div class="card-body p-0" >
-          <img src="https://i.vietgiaitri.com/2019/1/18/nu-sinh-ha-thanh-duyen-dang-trong-bo-anh-ngap-sac-do-don-tet-ky--484345.jpg" alt="" width="100%" height="auto" style="border-radius: 2px" >
-          
-          <p class="text-dark hiddentext text-center" style="margin-bottom: 0">Chị mười ba</p>
-          <p   style="text-align: center;margin-bottom: 0">120 phút</p>
-        </div>
-      </div>
-    </li>  --}}
-    {{--  <li>
-      <div class="card" style="border:none">
-        <div class="card-body p-0">
-          <img src="https://i.vietgiaitri.com/2019/1/18/nu-sinh-ha-thanh-duyen-dang-trong-bo-anh-ngap-sac-do-don-tet-ky--0ab4d9.jpg" alt="" width="100%" height="auto" style="border-radius: 2px">
-          <p class="text-dark hiddentext text-center" style="margin-bottom: 0">Chị mười ba</p>
-         <p>120 phút</p>
-        </div>
-      </div>
-    </li>  --}}
-  {{--  <li>
-    <div class="card" style="border:none">
-      <div class="card-body p-0">
-       <img src="https://i.vietgiaitri.com/2019/1/18/nu-sinh-ha-thanh-duyen-dang-trong-bo-anh-ngap-sac-do-don-tet-ky--d88b08.jpg" alt="" width="100%" height="auto" style="border-radius: 2px">
-       <p class="text-dark hiddentext text-center" style="margin-bottom: 0">Chị mười ba</p>
-       <p>120 phút</p>
-      </div>
-    </div>
-  </li>  --}}
-  {{--  <li>
-    <div class="card" style="border:none">
-      <div class="card-body p-0">
-       <img src="https://cdn.trangcongnghe.com/uploads/posts/2017-01/nu-streamer-trieu-view-misthy-no-nuc-don-tet-con-ga-cung-hoi-ban-than_3.jpeg" alt="" width="100%" height="auto" style="border-radius: 2px">
-       <p class="text-dark hiddentext text-center" style="margin-bottom: 0">Chị mười ba</p>
-       <p>120 phút</p>
-      </div>
-    </div>
-  </li>  --}}
-  {{--  <li>
-    <div class="card" style="border:none" >
-      <div class="card-body p-0">
-       <img src="https://cdn.trangcongnghe.com/uploads/posts/2017-01/nu-streamer-trieu-view-misthy-no-nuc-don-tet-con-ga-cung-hoi-ban-than_9.jpeg" alt="" width="100%" height="auto" style="border-radius: 2px">
-       <p class="text-dark hiddentext text-center" style="margin-bottom: 0">Chị mười ba</p>
-       <p>120 phút</p>
-      </div>
-    </div>
-  </li>  --}}
-
   </ul>
   </div>
 </div>

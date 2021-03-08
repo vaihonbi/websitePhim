@@ -11,7 +11,7 @@
 @section('content')
 <script async defer crossorigin="anonymous" src="https://connect.facebook.net/vi_VN/sdk.js#xfbml=1&version=v9.0" nonce="9VqaxijX"></script>
 
-{{--  <h1>{{id}}</h1>  --}}
+
     <div class="row m-1 mt-3">
       {{--  <div class="col">  --}}
         @if(film.serverStorage[0].typeVideo == 'link')
@@ -24,7 +24,7 @@
     @elseif(film.serverStorage[0].typeVideo == 'm3u8')
       <div id="video" class="col"></div>
       <script type="text/JavaScript">
-          jwplayer("video").setup({ "file": "http://localhost:3333/hls/{{film.serverStorage[0].link}}" });
+          jwplayer("video").setup({ "file": "https://xemphimchieurap.herokuapp.com/hls/{{film.serverStorage[0].link}}" });
       </script>
     @else
 
