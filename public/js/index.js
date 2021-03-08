@@ -3,7 +3,7 @@ $(document).ready(function() {
         speed: 1000,
         item: 6,
         pause: 3000,
-        auto: false,
+        auto: true,
         loop: true,
         pauseOnHover: true,
         slideEndAnimation: true,
