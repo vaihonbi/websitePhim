@@ -138,7 +138,7 @@ export default class FilmsController {
        
     }
     public async webtretho({view}){
-        const film =await Film.query().where('category_id',9);
+        const film =await Film.query().where('category_id',9).preload('information');
         const title='Phim 18+'
         return view.render('user.search',{title:title,film:film})
     }
