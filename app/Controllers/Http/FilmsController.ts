@@ -46,7 +46,7 @@ export default class FilmsController {
                 }
                 break;
             default:
-                return null;
+                response.redirect('back')
         }
         
     }
@@ -136,5 +136,10 @@ export default class FilmsController {
             return {success: false};
         }
        
+    }
+    public async webtretho({view}){
+        const film =await Film.query().where('category_id',9);
+        const title='Phim 18+'
+        return view.render('user.search',{title:title,film:film})
     }
 }

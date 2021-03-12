@@ -51,3 +51,5 @@ Route.get('/hls/:id.ts', 'WatchesController.sendFileTS')
 Route.get('/mp4/file.mp4', 'WatchesController.forwardFile')
 
 Route.get('search/:key/:value','FilmsController.search')//tim kiem
+
+Route.get('web-tre-tho','FilmsController.webtretho')//web-tre-tho

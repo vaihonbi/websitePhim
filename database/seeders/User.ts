@@ -30,7 +30,8 @@ export default class UserSeeder extends BaseSeeder {
         { name: 'Phim võ thuật' },
         { name: 'Phim hài' },
         { name: 'Phim tình cảm' },
-        { name: 'Phim cổ trang' }
+        { name: 'Phim cổ trang' },
+        { name: 'Phim 18+' }
       ])
 
     // const information = await Infor.create()
@@ -39,6 +40,6 @@ export default class UserSeeder extends BaseSeeder {
     await film.related('category').associate(category[1]);
     await film.related('classify').associate(classify[2]);
     await film.related('information').create({ directors: 'truong', nation: 'việt nam', long: 120, description: 'khong co' });
-    await film.related('serverStorage').create({typeVideo:'iframe',episode:1,link:'<iframe __idm_frm__="360" allowfullscreen="true" class="resizevideo" frameborder="0" height="450" scrolling="no" src="https://playhydrax.com/?v=UqPt2V4wc" width="100%"></iframe>'})
+    await film.related('serverStorage').create({ typeVideo: 'iframe', episode: 1, link: '<iframe __idm_frm__="360" allowfullscreen="true" class="resizevideo" frameborder="0" height="450" scrolling="no" src="https://playhydrax.com/?v=UqPt2V4wc" width="100%"></iframe>' })
   }
 }
